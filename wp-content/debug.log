@@ -1,0 +1,20 @@
+[06-Apr-2023 21:31:09 UTC] Exists
+[06-Apr-2023 21:31:10 UTC] PHP Fatal error:  Uncaught Error: Class 'Timber\Twig\Extension\StringLoaderExtension' not found in /var/www/html/wp-content/themes/boombit-conf/includes/class-starter-site.php:111
+Stack trace:
+#0 /var/www/html/wp-includes/class-wp-hook.php(307): Boombit\StarterSite->add_to_twig(Object(Twig\Environment))
+#1 /var/www/html/wp-includes/plugin.php(191): WP_Hook->apply_filters(Object(Twig\Environment), Array)
+#2 /var/www/html/wp-content/themes/boombit-conf/vendor/timber/timber/lib/Loader.php(190): apply_filters('timber/twig', Object(Twig\Environment))
+#3 /var/www/html/wp-content/themes/boombit-conf/vendor/timber/timber/lib/Loader.php(70): Timber\Loader->get_twig()
+#4 /var/www/html/wp-content/themes/boombit-conf/vendor/timber/timber/lib/Timber.php(334): Timber\Loader->render('index.twig', Array, false, 'default')
+#5 /var/www/html/wp-content/themes/boombit-conf/vendor/timber/timber/lib/Timber.php(383): Timber\Timber::compile(Array, Array, false, 'default', true)
+#6 /var/www/html/wp-content/themes/boombit-conf/vendor/timber/timber/lib/ in /var/www/html/wp-content/themes/boombit-conf/includes/class-starter-site.php on line 111
+[06-Apr-2023 21:31:36 UTC] Exists
+[06-Apr-2023 21:31:36 UTC] PHP Fatal error:  Uncaught Error: Class 'Boombit\StarterSite' not found in /var/www/html/wp-content/themes/boombit-conf/functions.php:23
+Stack trace:
+#0 /var/www/html/wp-settings.php(566): include()
+#1 /var/www/html/wp-config.php(133): require_once('/var/www/html/w...')
+#2 /var/www/html/wp-load.php(50): require_once('/var/www/html/w...')
+#3 /var/www/html/wp-admin/admin-ajax.php(22): require_once('/var/www/html/w...')
+#4 {main}
+  thrown in /var/www/html/wp-content/themes/boombit-conf/functions.php on line 23
+[06-Apr-2023 21:33:57 UTC] Exists
