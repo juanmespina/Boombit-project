@@ -1,0 +1,95 @@
+version: "3"
+
+services:
+  wordpress:
+    container_name: wordpress_${APP_NAME}
+    image: wordpress:6.0.2
+    restart: always
+    links:
+      - db:mysql
+    ports:
+      - 8080:80
+    volumes:
+      - boombit_data:/var/www/html:rw
+      - "./wp-content/themes:/var/www/html/wp-content/themes:rw"
+      - "./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini"
+      - "./wp-content/debug.log:/var/www/html/wp-content/debug.log"
+      # - "./wp-content/uploads:/var/www/html/wp-content/uploads:rw"
+      # - "./wp-content/plugins:/var/www/html/wp-content/plugins:rw"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: "${DB_NAME}"
+      WORDPRESS_DB_USER: "${DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        /* wpconfig */
+        define( 'FS_METHOD', 'direct' );
+        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_DISPLAY', false );
+    # command: /bin/sh -c "chown -R www-data:www-data /var/www/html/wp-content/uploads && chmod -R 777 /var/www/html/wp-content/uploads && exec apache2-foreground"        
+  
+  db:
+    container_name: mysql_${APP_NAME}
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    volumes:
+      - boombit_db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+
+  phpmyadmin:
+    container_name: phpmyadmin_${APP_NAME}
+    image: phpmyadmin/phpmyadmin
+    volumes:
+      - "./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini"
+    ports:
+      - 9090:80
+    environment:
+      MYSQL_USERNAME: "${MYSQL_USERNAME}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      PMA_HOST: db
+
+  # composer:
+  #   image: composer:latest
+  #   container_name: composer
+  #   volumes:
+  #     - "./app:/var/www/html/wp-content/themes"
+  #   working_dir: "/var/www/html/wp-content/themes"
+  #   environment:
+  #     WORDPRESS_DB_HOST: db:3306
+  #     WORDPRESS_DB_NAME: "${DB_NAME}"
+  #     WORDPRESS_DB_USER: "${DB_USER}"
+  #     WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
+    
+  #   depends_on:
+  #     - wordpress
+
+  wpcli:
+    container_name: wpcli_${APP_NAME}
+    image: wordpress:cli
+    user: xfs
+    volumes:
+      - boombit_data:/var/www/html:rw
+      # - "./plugins:/var/www/html/plugins:rw"
+    links:
+      - db:mysql
+    depends_on:
+      - db
+      - wordpress
+    command: "tail -f /dev/null"
+
+  # mailhog:
+  #   container_name: mailhog
+  #   image: mailhog/mailhog
+  #   ports:
+  #     - 1025:1025
+  #     - 8025:8025
+
+volumes:
+  boombit_db: {}
+  boombit_data: {}
