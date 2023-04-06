@@ -54,20 +54,20 @@ services:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       PMA_HOST: db
 
-  # composer:
-  #   image: composer:latest
-  #   container_name: composer
-  #   volumes:
-  #     - "./app:/var/www/html/wp-content/themes"
-  #   working_dir: "/var/www/html/wp-content/themes"
-  #   environment:
-  #     WORDPRESS_DB_HOST: db:3306
-  #     WORDPRESS_DB_NAME: "${DB_NAME}"
-  #     WORDPRESS_DB_USER: "${DB_USER}"
-  #     WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
+  composer:
+    image: composer:latest
+    container_name: composer_${APP_NAME}
+    volumes:
+      - "./wp-content/themes/boombit-conf:/var/www/html/wp-content/themes/boombit-conf:rw"
+    working_dir: "/var/www/html/wp-content/themes/boombit-conf"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: "${DB_NAME}"
+      WORDPRESS_DB_USER: "${DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
     
-  #   depends_on:
-  #     - wordpress
+    depends_on:
+      - wordpress
 
   wpcli:
     container_name: wpcli_${APP_NAME}
