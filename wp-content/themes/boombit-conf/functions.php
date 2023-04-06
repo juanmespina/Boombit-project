@@ -1,8 +1,11 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 use Boombit\StarterSite;
+use Boombit\Enqueue_Assets;
 use Timber\Timber;
 $timber = new Timber();
+new StarterSite();
+
 /**
  * Timber starter-theme
  * https://github.com/timber/starter-theme
@@ -14,10 +17,9 @@ $timber = new Timber();
 
 
 
-add_action('wp_enqueue_scripts', function () {
-	wp_register_style('theme_style', get_template_directory_uri() . '/static/style.css');
-	wp_enqueue_style('theme_style');
-}, 10);
+add_action('wp_enqueue_scripts', [Enqueue_Assets::class,'enqueue_styles'], 10);
+add_action('wp_enqueue_scripts', [Enqueue_Assets::class,'enqueue_scripts'], 10);
+
 /**
  * This ensures that Timber is loaded and available as a PHP class.
  * If not, it gives an error message to help direct developers on where to activate
@@ -51,4 +53,3 @@ Timber::$dirname = array('templates', 'views');
  */
 Timber::$autoescape = false;
 
-new StarterSite();
