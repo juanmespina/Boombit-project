@@ -24,13 +24,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
-
-    // Uncomment this if you want to use CSS Live reload
-    new BrowserSyncPlugin({
-      proxy: localDomain,
-      files: [ outputPath + '/*.css' ],
-      injectCss: true,
-    }, { reload: false, }),
   ],
   module: {
     rules: [
@@ -59,6 +52,16 @@ module.exports = {
         test: /\.(jpg|jpeg|png|gif|woff|woff2|eot|ttf|svg)$/i,
         use: 'url-loader?limit=1024',
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
     ]
   },
 };
