@@ -19,6 +19,10 @@ if ( file_exists( $composer_autoload ) ) {
 	$timber = new Timber\Timber();
 }
 
+add_action('wp_enqueue_scripts', function () {
+	wp_register_style('theme_style', get_template_directory_uri().'/static/style.css');
+	wp_enqueue_style('theme_style');
+}, 10);
 /**
  * This ensures that Timber is loaded and available as a PHP class.
  * If not, it gives an error message to help direct developers on where to activate

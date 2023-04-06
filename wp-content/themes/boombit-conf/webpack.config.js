@@ -26,13 +26,11 @@ module.exports = {
     }),
 
     // Uncomment this if you want to use CSS Live reload
-    /*
     new BrowserSyncPlugin({
       proxy: localDomain,
       files: [ outputPath + '/*.css' ],
       injectCss: true,
     }, { reload: false, }),
-    */
   ],
   module: {
     rules: [
