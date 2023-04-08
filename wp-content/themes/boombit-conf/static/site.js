@@ -10,16 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/js/site.js":
-/*!***************************!*\
-  !*** ./assets/js/site.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n\n\njQuery( document ).ready( function( $ ) {\n\n  console.log('Loading')\n});\n\n//# sourceURL=webpack://boombit-conf/./assets/js/site.js?");
-
-/***/ }),
-
 /***/ "./node_modules/@popperjs/core/lib/createPopper.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/createPopper.js ***!
@@ -617,6 +607,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"within\": () => (/* binding */ within),\n/* harmony export */   \"withinMaxClamp\": () => (/* binding */ withinMaxClamp)\n/* harmony export */ });\n/* harmony import */ var _math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math.js */ \"./node_modules/@popperjs/core/lib/utils/math.js\");\n\nfunction within(min, value, max) {\n  return (0,_math_js__WEBPACK_IMPORTED_MODULE_0__.max)(min, (0,_math_js__WEBPACK_IMPORTED_MODULE_0__.min)(value, max));\n}\nfunction withinMaxClamp(min, value, max) {\n  var v = within(min, value, max);\n  return v > max ? max : v;\n}\n\n//# sourceURL=webpack://boombit-conf/./node_modules/@popperjs/core/lib/utils/within.js?");
+
+/***/ }),
+
+/***/ "./assets/js/site.js":
+/*!***************************!*\
+  !*** ./assets/js/site.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n\njQuery(document).ready(function ($) {\n  function BoombitTheme() {\n    var _self = this;\n    console.log(\"Loading\");\n    _self.changeNavbarBgOnScroll();\n  }\n  BoombitTheme.prototype.changeNavbarBgOnScroll = function () {\n    $(document).scroll(function () {\n      var $nav = $(\".navbar.fixed-top\");\n      if ($(this).scrollTop() > $nav.height()) {\n        $nav.addClass(\"navbar-light bg-light opacity-75\");\n        $(\".navbar-brand img\").attr(\"src\", \"https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-dark.svg\");\n      } else {\n        $nav.removeClass(\"navbar-white bg-white opacity-75\");\n        $(\".navbar-brand img\").attr(\"src\", \"https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-light.svg\");\n      }\n    });\n  };\n  new BoombitTheme();\n});\n\n//# sourceURL=webpack://boombit-conf/./assets/js/site.js?");
 
 /***/ }),
 
