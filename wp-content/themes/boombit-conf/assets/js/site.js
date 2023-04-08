@@ -1,6 +1,7 @@
 import * as bootstrap from "bootstrap";
 
-jQuery(document).ready(function ($) {
+document.addEventListener('DOMContentLoaded', function() {
+
   function BoombitTheme() {
     const _self = this;
     console.log("Loading");
@@ -8,17 +9,17 @@ jQuery(document).ready(function ($) {
   }
   
   BoombitTheme.prototype.changeNavbarBgOnScroll = function () {
-    $(document).scroll(function () {
-      const $nav = $(".navbar.fixed-top");
-      if ($(this).scrollTop() >= $nav.height()) {
-        $nav.addClass("navbar-light bg-light opacity-75");
-        $(".navbar-brand img").attr(
+    const nav = document.querySelector(".navbar.fixed-top");
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset >= nav.offsetHeight) {
+        nav.classList.add("navbar-light", "bg-light", "opacity-75");
+        document.querySelector(".navbar-brand img").setAttribute(
           "src",
           "https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-dark.svg"
         );
       } else {
-        $nav.removeClass("navbar-light bg-light opacity-75");
-        $(".navbar-brand img").attr(
+        nav.classList.remove("navbar-light", "bg-light", "opacity-75");
+        document.querySelector(".navbar-brand img").setAttribute(
           "src",
           "https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-light.svg"
         );
@@ -26,6 +27,6 @@ jQuery(document).ready(function ($) {
     });
   };
 
-
   new BoombitTheme();
+
 });
