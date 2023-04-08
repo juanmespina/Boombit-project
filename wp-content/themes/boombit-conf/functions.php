@@ -80,7 +80,7 @@ function register_conference_post_type()
 		'public'              => true,
 		'has_archive'         => true,
 		'menu_icon'           => 'dashicons-calendar-alt',
-		'supports'            => array('title', 'editor', 'thumbnail'),
+		'supports'            => array('title'),
 		'rewrite'             => array('slug' => 'conferences'),
 		'show_in_rest'        => true
 	);
@@ -115,7 +115,7 @@ function register_talk_post_type()
 		'public'              => true,
 		'has_archive'         => true,
 		'menu_icon'           => 'dashicons-microphone',
-		'supports'            => array('title', 'editor', 'thumbnail'),
+		'supports'            => array('title'),
 		'rewrite'             => array('slug' => 'talks'),
 		'show_in_rest'        => true
 	);
@@ -155,7 +155,7 @@ function create_speakers_post_type()
 		'has_archive'         => true,
 		'hierarchical'        => false,
 		'menu_position'       => null,
-		'supports'            => array('title', 'editor', 'thumbnail'),
+		'supports'            => array('title'),
 		'menu_icon'           => 'dashicons-businessman'
 	);
 
