@@ -1,0 +1,42 @@
+{% extends 'base.twig' %}
+	{% block header %}
+		{% include 'navbar.twig' %}
+        <!-- Hero -->
+        <section class="hero text-white" style="
+            background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');">
+            <div class="row justify-content-around align-items-center h-100 overlay-dark">
+                <div class="col-12 text-center">
+                    <h1>{{ post.title }}</h1>
+                    {# <a class="btn btn-primary btn-lg" href="#!" role="button">Sign up!</a> #}
+                </div>
+                <div class="col-xl-12 d-flex justify-content-around align-items-center ">
+                    {# <div class="col"> #}
+                        <h4>Date: {{ post.date }}</h4>
+                    {# </div>
+                    <div class="col"> #}
+                        <h4><i class="bi bi-geo-alt"></i> {{ post.location }}</h4>
+                    {# </div> #}
+                </div>
+            </div>
+        </section>
+        <!-- Hero -->
+    {% endblock %}
+{% block content %}
+  <article>
+    <p><strong>Description:</strong> {{ post.description }}</p>
+    <p><strong>Location:</strong> {{ post.location }}</p>
+    <p><strong>Date:</strong> {{ post.date|date('F j, Y') }}</p>
+    <h3>Talks</h3>
+    {% for talk in post.get_field('talks') %}
+      <div>
+        <h4>{{ talk.name }}</h4>
+        <p><strong>Time:</strong> {{ talk.time }}</p>
+        <p><strong>Speaker:</strong> {{ talk.speaker.name }}</p>
+        <p><strong>Expertise:</strong> {{ talk.speaker.expertise }}</p>
+        {% if talk.speaker.photo %}
+          <img src="{{ talk.speaker.photo.src }}" alt="{{ talk.speaker.photo.alt }}" />
+        {% endif %}
+      </div>
+    {% endfor %}
+  </article>
+{% endblock %}
