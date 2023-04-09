@@ -1,16 +1,46 @@
-<footer id="footer" class="container">
-    <section class="row">
-        <div class="col-xs-6 col-xl-3">
-            <img src="https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-light.svg" class="footer-logo" alt="Boombit">
-        </div>
-        <div class="col-xs-6 col-xl-3">
-        </div>
-        <div class="col-xs-6 col-xl-3">
-        </div>
-        <div class="col-xs-6 col-xl-3">
+<footer id="footer" class="footer pt-4 text-white">
+    <section class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-xs-6 col-xl-4 row justify-content-center align-items-center">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <img src="https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-light.svg" class="footer-logo" alt="Boombit">
+                </div>
+                <div class="col-12">
+                    <p class="mt-4">{{ options.page_description }}</p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-4 row justify-content-center align-items-center text-center">
+                <h5> Latest conferences</h5>
+                <div class="col-12">
+                    <ul class="nav flex-column">  
+                        {% for conference in latest_conferences %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{conference.link}}">{{conference.post_title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-4 row justify-content-center align-items-center text-center">
+                <h5>Contact us</h5>
+                <div class="col-12">
+                    <a rel="noreferrer noopener" href="mailto:{{options.contact_email}}" target="_blank">{{ options.contact_email }}</a>
+                </div>
+                <div class="col-12">
+                    <p>
+                        {{options.main_branch}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-xl-3">
+                
+            </div>
+            <div class="col-12 text-center">
+                All rights reserved. Particle 8590 LLC. {{"now"|date('Y')}} / Boombit.
+            </div>
         </div>
     </section>
-Copyright {{"now"|date('Y')}}
+
 </footer>
 {{ function('wp_footer') }}
 
