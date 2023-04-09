@@ -1,8 +1,8 @@
 {% if menu %}
-    	<ul class="navbar-nav justify-content-end">
+    	<ul class="navbar-nav justify-content-end fw-bold">
 		{% for item in items %}
 			<li class="nav-item {{ item.children ? 'dropdown'}}">
-				<a id="menu-{{item.object_id}}" class="{{ item.children ? 'dropdown-toggle'}} nav-link {{ item.current == 1 ? "active" }}" {{ item.children ? 'data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"'}}  {{ item.current == 1 ? "aria-current='page'" }} target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+				<a id="menu-{{item.object_id}}" class="opacity-100 {{ item.children ? 'dropdown-toggle'}} nav-link {{ item.current == 1 ? "active" }}" {{ item.children ? 'data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"'}}  {{ item.current == 1 ? "aria-current='page'" }} target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 				{% if item.children %}
 						<div class="dropdown-menu" aria-labelledby="menu-{{item.object_id}}">
 							{% for child in item.children %}							

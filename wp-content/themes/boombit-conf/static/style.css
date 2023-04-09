@@ -18634,7 +18634,10 @@ textarea.form-control-lg {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.footer-logo {
+.footer {
+  background-color: #561d5e;
+}
+.footer .footer-logo {
   height: 40px;
 }
 
@@ -18643,15 +18646,15 @@ textarea.form-control-lg {
 }
 
 .border-primary-dark {
-  border-color: #9b51e0;
+  border-color: #561d5e;
 }
 
 .bg-primary-dark {
-  background-color: #9b51e0;
+  background-color: #561d5e;
 }
 
 .text-primary-dark {
-  color: #9b51e0;
+  color: #561d5e;
 }
 
 .text-primary-darker {
