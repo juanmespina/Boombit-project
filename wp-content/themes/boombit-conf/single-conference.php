@@ -1,7 +1,6 @@
 <?php
 $context = Timber::context();
 $context['post'] = new Timber\Post();
-error_log(print_r($context['post'],true));
 $context['talks'] = Timber::get_posts([
     'post_type' => 'talk',
     'meta_query' => array(
