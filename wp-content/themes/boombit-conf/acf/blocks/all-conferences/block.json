@@ -1,0 +1,25 @@
+{
+    "name": "all_conferences",
+    "title": "Show all conferences",
+    "description": "",
+    "category": "theme",
+    "icon": "calendar",
+    "apiVersion": 2,
+    "version": "1",
+    "keywords": [],
+    "postTypes": ["conference"],
+    "acf": {
+        "mode": "preview",
+	    "renderTemplate": "render.php"
+    },
+    "styles": [],
+    "supports": {
+        "align": true,
+        "anchor": true,
+        "alignContent": true,
+        "alignText": true,
+        "fullHeight": true
+    },
+    "attributes": {
+    }
+}

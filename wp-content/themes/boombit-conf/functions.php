@@ -248,4 +248,42 @@ if( function_exists('acf_add_options_page') ) {
 	   'capability' => 'edit_posts',
 	   'redirect' => false
 	));
- }
+}
+
+function validate_conference_dates() {
+
+    if ( get_post_type() == 'conference' ) {
+		$start_date = DateTime::createFromFormat('Ymd', $_POST['acf']['field_6430c53637312']);
+		$end_date = DateTime::createFromFormat('Ymd', $_POST['acf']['field_643237e593d94']);
+		if ($start_date > $end_date) {
+			error_log('Entro');
+			acf_add_validation_error('', 'Required');
+		}
+	}
+}
+add_action('acf/validate_save_post', 'validate_conference_dates',100);
+
+
+// add_action('acf/init', function() {
+// 	if (function_exists('acf_register_block')) {
+// 		acf_register_block([
+// 			'name' => 'all-conferences',
+// 			'title' =>'Show all conferences',
+// 			'description' => 'This blocks lets you show all the conference available.',
+// 			'category' => 'formatting',
+// 			'icon' => 'calendar',
+// 			'render_template' => 'template-parts/acf-blocks/all-conferences.php',		
+// 		]);
+// 	}
+// });
+
+// function register_conference_block_script()
+// {
+// 	wp_register_script('all-conferences-block', get_template_directory_uri() . '/acf/blocks/all-conferences/all-conferences.js', ['jquery', 'acf']);
+// }
+// add_action('init', 'register_conference_block_script');
+
+function register_boombit_all_conferences_block() {
+	register_block_type( dirname(__FILE__) . '/acf/blocks/all-conferences' );
+}
+add_action( 'init', 'register_boombit_all_conferences_block' );
