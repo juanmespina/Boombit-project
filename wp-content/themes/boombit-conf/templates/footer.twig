@@ -5,9 +5,11 @@
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <img src="https://boombit.agency/wp-content/uploads/2021/08/boombit-logo-light.svg" class="footer-logo" alt="Boombit">
                 </div>
-                <div class="col-12">
-                    <p class="mt-4">{{ options.page_description }}</p>
-                </div>
+                {% if options.page_description %}              
+                    <div class="col-12">
+                        <p class="mt-4">{{ options.page_description }}</p>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-xs-6 col-xl-4 row justify-content-center align-items-center text-center">
                 <h5> Latest conferences</h5>
@@ -21,6 +23,7 @@
                     </ul>
                 </div>
             </div>
+            {% if options.page_description and options.main_branch %}              
             <div class="col-xs-6 col-xl-4 row justify-content-center align-items-center text-center">
                 <h5>Contact us</h5>
                 <div class="col-12">
@@ -32,9 +35,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-xs-6 col-xl-3">
-                
-            </div>
+            {% endif %}
             <div class="col-12 text-center">
                 All rights reserved. Particle 8590 LLC. {{"now"|date('Y')}} / Boombit.
             </div>
