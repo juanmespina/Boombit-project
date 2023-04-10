@@ -18625,6 +18625,11 @@ textarea.form-control-lg {
   height: 500px;
 }
 
+.conference-banner {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .speaker-photo {
   width: 200px;
   border-radius: 50%;
@@ -18651,6 +18656,10 @@ textarea.form-control-lg {
 
 .bg-primary-dark {
   background-color: #561d5e;
+}
+
+.bg-primary-darker {
+  background-color: #2a0f2e;
 }
 
 .text-primary-dark {

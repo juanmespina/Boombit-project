@@ -263,27 +263,13 @@ function validate_conference_dates() {
 }
 add_action('acf/validate_save_post', 'validate_conference_dates',100);
 
-
-// add_action('acf/init', function() {
-// 	if (function_exists('acf_register_block')) {
-// 		acf_register_block([
-// 			'name' => 'all-conferences',
-// 			'title' =>'Show all conferences',
-// 			'description' => 'This blocks lets you show all the conference available.',
-// 			'category' => 'formatting',
-// 			'icon' => 'calendar',
-// 			'render_template' => 'template-parts/acf-blocks/all-conferences.php',		
-// 		]);
-// 	}
-// });
-
-// function register_conference_block_script()
-// {
-// 	wp_register_script('all-conferences-block', get_template_directory_uri() . '/acf/blocks/all-conferences/all-conferences.js', ['jquery', 'acf']);
-// }
-// add_action('init', 'register_conference_block_script');
-
 function register_boombit_all_conferences_block() {
 	register_block_type( dirname(__FILE__) . '/acf/blocks/all-conferences' );
 }
 add_action( 'init', 'register_boombit_all_conferences_block' );
+
+function add_theme_styles_to_guttenberg() {
+  add_theme_support( 'editor-styles' );
+  add_editor_style( 'static/style.css' );
+}
+add_action( 'after_setup_theme', 'add_theme_styles_to_guttenberg' );

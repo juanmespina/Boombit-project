@@ -1,0 +1,24 @@
+<section class="container-fluid m-0 p-0">
+    {% for post in posts %}
+        <div class="row bg-{{conference_row_background_color}} m-{{conference_row_margin}} p-{{conference_row_padding}} {% if loop.index%2 == 0 and layout != 'one_cols' %} flex-row-reverse {% endif %}">
+            <div class="bg-{{title_column_background_color}} {% if layout == 'one_cols' %} col-12 {% else %} col-md-12 col-xl-6 {% endif %} d-flex align-items-center overlay-dark conference-banner p-{{title_column_padding}}"  style="min-height: {{title_column_minimum_height}}px; {% if show_banner %}background-image:  url('{% if post.get_field('banner') %}{{post.get_field('banner')}}{% else %}https://mdbcdn.b-cdn.net/img/new/slides/041.webp{% endif %}{% endif %}');">                
+                <div class=" w-100 text-center text-{{title_color}}">
+                    <h2 class="w-100">{{ post.title }}</h2>
+                    <h4><i class="bi bi-calendar-date"></i> {{ post.get_field('start_date')|date("F j, Y")|escape('wp_kses_post') }}</h4>
+                    <h4><i class="bi bi-geo-alt"></i> {{ post.location }}</h4>
+                    <a href="{{ post.link }}">Check the details</a>
+                </div>
+            </div>
+            <div class="bg-{{text_column_background_color}} {% if layout == 'one_cols' %} col-12 {% else %} col-md-12 col-xl-6 {% endif %} p-{{text_column_padding}}" style="min-height: {{text_column_minimum_height}}px;">
+                <p class="text-{{text_color}}">
+                    {{post.description}}
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-around w-100 text-primary-dark">
+        {% if show_all_conferences == false %}
+            {% include 'acf-blocks/blocks-pagination.twig' with { pagination: posts.pagination({show_all: true, mid_size: 3, end_size: 2}) } %}
+        {% endif %}
+    </div>
+</section>

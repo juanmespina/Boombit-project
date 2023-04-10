@@ -3,8 +3,7 @@
 {% block header %}
     {% include 'navbar.twig' %}
     <!-- Hero -->
-    <section class="hero text-white container-fluid" style=" background-repeat: no-repeat;background-size: cover;
-        background-image:  url('{% if post.get_field('banner') %}{{post.get_field('banner')}}{% else %}https://mdbcdn.b-cdn.net/img/new/slides/041.webp{% endif %}'); ">
+    <section class="hero text-white container-fluid conference-banner" style="background-image:  url('{% if post.get_field('banner') %}{{post.get_field('banner')}}{% else %}https://mdbcdn.b-cdn.net/img/new/slides/041.webp{% endif %}'); ">
         <div class="row justify-content-around align-items-center h-100 overlay-dark">
             <div class="col-12 text-center text-capitalize">
                 <h1>{{ post.title }}</h1>
