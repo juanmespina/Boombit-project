@@ -15,7 +15,7 @@ services:
       - "./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini"
       - "./wp-content/debug.log:/var/www/html/wp-content/debug.log"
       - "./wp-content/uploads:/var/www/html/wp-content/uploads:rw"
-      - "./wp-content/plugins:/var/www/html/wp-content/plugins:rw"
+      # - "./wp-content/plugins:/var/www/html/wp-content/plugins:rw"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: "${DB_NAME}"
@@ -75,14 +75,18 @@ services:
     user: xfs
     volumes:
       - boombit_data:/var/www/html:rw
-      - "./managePlugins.sh:/var/www/html:rw"
-      - "./mu/plugins:/var/www/html/plugins:rw"
+      - "./mu-plugins:/var/www/html/plugins:rw"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: "${DB_NAME}"
+      WORDPRESS_DB_USER: "${DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${DB_PASSWORD}"
     links:
       - db:mysql
     depends_on:
       - db
       - wordpress
-    command: "tail -f /dev/null; sh managePlugins.sh"
+    command: "tail -f /dev/null"
 
   # mailhog:
   #   container_name: mailhog
