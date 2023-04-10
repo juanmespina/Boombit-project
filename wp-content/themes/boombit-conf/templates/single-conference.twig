@@ -92,7 +92,9 @@
                             {% endfor %}
                             </ul>
                           </td>
-                          <td>{{talk.terms('topic')| join(', ') }}</td>
+                          <td>{% if talk.terms('topic') %}{{talk.terms('topic')| join(', ') }} {% else %}
+                            Boombit conf.
+                          {% endif %}</td>
                         </tr>
                     {% endfor %}
                   </tbody>
