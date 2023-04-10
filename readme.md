@@ -7,8 +7,8 @@
 
 1. Download the repo.
 1. Start docker.
-1. Run docker-compose up -d in the root of the project. Wait for all the containers to run.
 1. Create .env file using the env.example file.
+1. Run docker-compose up -d in the root of the project. Wait for all the containers to run.
 1. Upload database file using php my admin in localhost:9090 to and import it to the database with the name you selected in .env file.
 1.Run the managePlugin.sh file in the root of the project.
 1. Now everything should be set up for use.
