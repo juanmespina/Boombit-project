@@ -5,6 +5,7 @@ use Boombit\StarterSite;
 use Boombit\Enqueue_Assets;
 use Boombit\Custom_Post_Types;
 use Boombit\Custom_Taxonomy;
+use Boombit\Acf_Loader;
 use Timber\Timber;
 
 $timber = new Timber();
@@ -26,10 +27,14 @@ add_action('wp_enqueue_scripts', [Enqueue_Assets::class, 'enqueue_styles'], 10);
 add_action('wp_enqueue_scripts', [Enqueue_Assets::class, 'enqueue_scripts'], 10);
 
 if( class_exists('ACF') ) {
+	Acf_Loader::load_field_groups();
+	Acf_Loader::load_options_page();
 	add_action('init', function () {
 		register_block_type(dirname(__FILE__) . '/acf/blocks/all-conferences');
 	});
+
 }
+
 add_action('after_setup_theme', function () {
 	add_theme_support('editor-styles');
 	add_editor_style('static/style.css');
@@ -70,15 +75,7 @@ Timber::$dirname = array('templates', 'views');
 Timber::$autoescape = false;
 
 
-if( function_exists('acf_add_options_page') ) {
-	acf_add_options_page(array(
-	   'page_title' => 'Theme Options',
-	   'menu_title' => 'Theme Options',
-	   'menu_slug' => 'theme-options',
-	   'capability' => 'edit_posts',
-	   'redirect' => false
-	));
-}
+
 
 
 
