@@ -1,18 +1,8 @@
          echo -e "1.0 ---- Installing plugins"
          echo -e "1.1 ---- Installing Local plugins"
-         docker exec -i wpcli sh -c "wp plugin install customPlugins/elementor.zip --force --allow-root --activate"
-         docker exec -i wpcli sh -c "wp plugin install customPlugins/elementor-pro.zip --force --allow-root --activate"
-         docker exec -i wpcli sh -c "wp plugin install customPlugins/header-footer-elementor.zip --force --allow-root --activate"
-         docker exec -i wpcli sh -c "wp plugin install customPlugins/revslider.zip --force --allow-root --activate"
+        wp plugin install plugins/advanced-custom-fields.zip --force --allow-root --activate
 
 
 		 echo -e "1.1 ---- Installing Online plugins"
-         docker exec -i wpcli sh -c "wp plugin install advanced-custom-fields --activate"
-         docker exec -i wpcli sh -c "wp plugin install cloudflare --activate"
-         docker exec -i wpcli sh -c "wp plugin install contact-form-7 --activate"
-         docker exec -i wpcli sh -c "wp plugin install webp-converter-for-media --activate"
-         docker exec -i wpcli sh -c "wp plugin install rocket-lazy-load --activate"
-         docker exec -i wpcli sh -c "wp plugin install woocommerce --activate" 
-         docker exec -i wpcli sh -c "wp plugin install wordpress-seo --activate"
-         docker exec -i wpcli sh -c "wp plugin install creame-whatsapp-me --activate"
-         docker exec -i wpcli sh -c "wp plugin install instagram-feed --activate"
+         wp plugin install contact-form-7 --activate
+ 

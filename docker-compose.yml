@@ -75,13 +75,14 @@ services:
     user: xfs
     volumes:
       - boombit_data:/var/www/html:rw
-      # - "./plugins:/var/www/html/plugins:rw"
+      - "./managePlugins.sh:/var/www/html:rw"
+      - "./mu/plugins:/var/www/html/plugins:rw"
     links:
       - db:mysql
     depends_on:
       - db
       - wordpress
-    command: "tail -f /dev/null"
+    command: "tail -f /dev/null; sh managePlugins.sh"
 
   # mailhog:
   #   container_name: mailhog
