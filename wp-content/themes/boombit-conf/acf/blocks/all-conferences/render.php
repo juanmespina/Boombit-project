@@ -34,7 +34,7 @@ $args = array(
     'meta_key'=> 'start_date',
     'order_by' => 'meta_key'
 );
-$context['show_all_conferences']= $post_per_page == -1;
+$context['show_all_conferences']= $post_per_page == -1 ? 'true' : 'false';
 $context['posts'] = new Timber\PostQuery($args);
 Timber::render('acf-blocks/all-conferences.twig', $context);
 

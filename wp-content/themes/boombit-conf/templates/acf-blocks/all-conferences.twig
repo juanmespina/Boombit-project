@@ -16,9 +16,10 @@
             </div>
         </div>
     {% endfor %}
-    <div class="d-flex align-items-center justify-content-around w-100 text-primary-dark">
-        {% if show_all_conferences == false %}
-            {% include 'acf-blocks/blocks-pagination.twig' with { pagination: posts.pagination({show_all: true, mid_size: 3, end_size: 2}) } %}
-        {% endif %}
-    </div>
+    
+    {% if show_all_conferences == 'false' %}
+        <div class="d-flex align-items-center justify-content-around w-100 text-primary-dark">
+                {% include 'acf-blocks/blocks-pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+        </div>
+    {% endif %}
 </section>
