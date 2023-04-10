@@ -12,6 +12,15 @@
 		<header class="header" >
 			{% block header %}
 				{% include 'navbar.twig' %}
+				{% block hero %}
+					<section class="hero text-white container-fluid conference-banner" style="background-image:  url('{% if post.thumbnail.src('large') %}{{post.thumbnail.src('large')}}{% else %}https://mdbcdn.b-cdn.net/img/new/slides/041.webp{% endif %}'); ">
+						<div class="row justify-content-around align-items-center h-100 overlay-dark">
+						    <div class="col-12 text-center text-capitalize">
+						        <h1>{{ post.title }}</h1>
+							</div>
+						</div>
+    				</section>
+			{% endblock %}
 			{% endblock %}
 		</header>
 		<section id="content" role="main" class="content-wrapper container-fluid m-0">

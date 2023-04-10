@@ -18625,6 +18625,10 @@ textarea.form-control-lg {
   height: 500px;
 }
 
+.article-h1 {
+  display: none;
+}
+
 .conference-banner {
   background-repeat: no-repeat;
   background-size: cover;
